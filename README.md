@@ -2,6 +2,10 @@
 
 Just a central repository where I can collect some random ideas for WordPress as they pop into my head.
 
+## dump-server
+
+A (rough) integration of the Symfony VarDumper dump server for non-framework sites. This is not a WP specific tool but could potentially be updated to include WP-specific context data and/or be reworked to run within WP-CLI.
+
 ## flush-free-rewrites
 
 A very minimal abstraction over the rewrite API which allows for adding/removing rewrite rules at runtime without touching the database.

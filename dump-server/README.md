@@ -6,7 +6,7 @@ A (rough) integration of the Symfony VarDumper dump server for non-framework sit
 
 Composer is required.
 
-Copy the `dummp-server` directory into your project and run `composer install`.
+Copy the `dump-server` directory into your project and run `composer install`.
 
 In your project, require the Composer autoloader and load the dump server package:
 

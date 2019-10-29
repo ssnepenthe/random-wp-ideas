@@ -32,9 +32,9 @@ class Query_Proxy implements QueryInterface {
 		return $this->query->sql();
 	}
 
-    public function params( EngineInterface $engine ) : array {
-    	return $this->query->params();
-    }
+	public function params( EngineInterface $engine ) : array {
+		return $this->query->params();
+	}
 
 	public function get_var( $x = 0, $y = 0 ) {
 		return $this->db->get_var( $this, $x, $y );

@@ -21,11 +21,11 @@ class Event_Manager {
 		$this->invoker = $invoker ?: new Invoker(
 			// The default resolver doesn't include TypeHintResolver.
 			new ResolverChain([
-	            new NumericArrayResolver,
-	            new TypeHintResolver,
-	            new AssociativeArrayResolver,
-	            new DefaultValueResolver,
-	        ])
+				new NumericArrayResolver,
+				new TypeHintResolver,
+				new AssociativeArrayResolver,
+				new DefaultValueResolver,
+			])
 		);
 	}
 

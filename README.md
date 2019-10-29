@@ -17,3 +17,7 @@ A wrapper around the Symfony VarDumper component which sends the output of the `
 ## hook-injection
 
 An abstraction over the hook API which provides automatic injection of WordPress globals into hook callbacks.
+
+## query-builder
+
+A very simple bridge between wpdb and the latitude query builder package.

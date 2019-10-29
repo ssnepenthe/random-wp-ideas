@@ -77,6 +77,13 @@ class Db {
 		$position = 0;
 
 		return preg_replace_callback( '/\?/', function ( $matches ) use ( $params, &$position ) {
+			// Guard against errors if for some reason there is a ? in $sql that was actually
+			// intended as part of the query and not as parameter placeholder.
+			if ( ! isset( $params[ $position ] ) ) {
+				// @todo Is InvalidArgumentException more appropriate?
+				throw new \RuntimeException( '@todo' );
+			}
+
 			$param = $params[ $position++ ];
 
 			if ( is_string( $param ) ) {

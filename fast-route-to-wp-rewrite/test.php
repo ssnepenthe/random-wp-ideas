@@ -88,11 +88,3 @@ foreach ( $test_routes as [ $input, $output ] ) {
 }
 
 echo 'SUCCESS!';
-
-$converter = new \FRWP\Converter( 'pfx_' );
-$converter->resolve_additional_params_using( function( $regex, $query_array ) {
-    // Closure is bound to converter instance. Params array is merged into parsed params array.
-    return [ "{$this->prefix}status" => 'preorder' ];
-} );
-
-var_export( $converter->to_wp_rewrite( '/books/{title:[a-z0-9-]+}' ) );

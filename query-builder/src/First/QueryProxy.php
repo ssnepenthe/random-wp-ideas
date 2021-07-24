@@ -2,7 +2,7 @@
 
 // @todo Name... Proxies calls to EITHER the query or the db.
 
-namespace Query_Builder;
+namespace QueryBuilder\First;
 
 use BadMethodCallException;
 use Latitude\QueryBuilder\EngineInterface;
@@ -11,7 +11,7 @@ use Latitude\QueryBuilder\Query;
 use Latitude\QueryBuilder\QueryInterface;
 use Latitude\QueryBuilder\StatementInterface;
 
-class Query_Proxy implements QueryInterface {
+class QueryProxy implements QueryInterface {
 	protected $db;
 	protected $query;
 
@@ -36,15 +36,19 @@ class Query_Proxy implements QueryInterface {
 		return $this->query->params();
 	}
 
-	public function get_var( $x = 0, $y = 0 ) {
+	public function getVar( $x = 0, $y = 0 ) {
 		return $this->db->get_var( $this, $x, $y );
 	}
 
-	public function get_row( $output = OBJECT, $y = 0 ) {
+	public function getRow( $output = OBJECT, $y = 0 ) {
 		return $this->db->get_row( $this, $output, $y );
 	}
 
-	public function get_results( $output = OBJECT ) {
+	public function getCol( $x = 0 ) {
+		return $this->db->get_col( $this, $x );
+	}
+
+	public function getResults( $output = OBJECT ) {
 		return $this->db->get_results( $this, $output );
 	}
 
@@ -55,14 +59,6 @@ class Query_Proxy implements QueryInterface {
 	public function __call( $method, $args ) {
 		if ( method_exists( $this->query, $method ) ) {
 			call_user_func_array( [ $this->query, $method ], $args );
-
-			return $this;
-		}
-
-		$camel_cased = str_camel( $method );
-
-		if ( method_exists( $this->query, $camel_cased ) ) {
-			call_user_func_array( [ $this->query, $camel_cased ], $args );
 
 			return $this;
 		}
@@ -79,7 +75,7 @@ class Query_Proxy implements QueryInterface {
 		// @todo Should we modify and return this instance instead?
 		// $this->query = $this->query->union( $right );
 		// return $this;
-		return new Query_Proxy( $this->query->union( $right ) );
+		return new QueryProxy( $this->query->union( $right ) );
 	}
 
 	public function unionAll( StatementInterface $right ) {
@@ -90,10 +86,6 @@ class Query_Proxy implements QueryInterface {
 		// @todo Should we modify and return this instance instead?
 		// $this->query = $this->query->unionAll( $right );
 		// return $this;
-		return new Query_Proxy( $this->query->unionAll( $right ) );
-	}
-
-	public function union_all( StatementInterface $right ) {
-		return $this->unionAll( $right );
+		return new QueryProxy( $this->query->unionAll( $right ) );
 	}
 }

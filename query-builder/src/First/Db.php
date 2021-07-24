@@ -1,6 +1,6 @@
 <?php
 
-namespace Query_Builder;
+namespace QueryBuilder\First;
 
 use wpdb;
 use InvalidArgumentException;
@@ -9,10 +9,10 @@ use Latitude\QueryBuilder\QueryInterface;
 /**
  * Covers the primary query functions of wpdb.
  *
- * Does not include the insert, replace or delete methods which can be handled by passing an
+ * Does not include the insert, delete or update methods which can be handled by passing an
  * instance of their corresponding query classes to the query method.
  *
- * Does not include the update method which is not supported by latitude AFAIK.
+ * Does not include the replace method which is not supported by latitude AFAIK.
  */
 class Db {
 	protected $db;
@@ -27,19 +27,19 @@ class Db {
 		}
 	}
 
-	public function get_var( QueryInterface $query, $x = 0, $y = 0	 ) {
+	public function getVar( QueryInterface $query, $x = 0, $y = 0 ) {
 		return $this->db->get_var( $this->prepare( $query ), $x, $y );
 	}
 
-	public function get_row( QueryInterface $query, $output = OBJECT, $y = 0 ) {
+	public function getRow( QueryInterface $query, $output = OBJECT, $y = 0 ) {
 		return $this->db->get_row( $this->prepare( $query ), $output, $y );
 	}
 
-	public function get_col( QueryInterface $query, $x = 0 ) {
+	public function getCol( QueryInterface $query, $x = 0 ) {
 		return $this->db->get_col( $this->prepare( $query ), $x );
 	}
 
-	public function get_results( QueryInterface $query, $output = OBJECT ) {
+	public function getResults( QueryInterface $query, $output = OBJECT ) {
 		return $this->db->get_results( $this->prepare( $query ), $output );
 	}
 
@@ -68,12 +68,12 @@ class Db {
 		}
 
 		return $this->db->prepare(
-			$this->replace_placeholders( $compiled->sql(), $params ),
+			$this->replacePlaceholders( $compiled->sql(), $params ),
 			$params
 		);
 	}
 
-	protected function replace_placeholders( $sql, $params ) : string {
+	protected function replacePlaceholders( $sql, $params ) : string {
 		$position = 0;
 
 		return preg_replace_callback( '/\?/', function ( $matches ) use ( $params, &$position ) {

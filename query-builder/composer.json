@@ -3,7 +3,10 @@
         "latitude/latitude": "^4.0"
     },
     "autoload": {
-    	"classmap": ["src/"],
-    	"files": ["src/functions.php"]
+    	"psr-4": { "QueryBuilder\\": "src/" },
+    	"files": [
+    		"src/First/functions.php",
+    		"src/Second/functions.php"
+    	]
     }
 }

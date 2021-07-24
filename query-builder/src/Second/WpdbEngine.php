@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace QueryBuilder\Second;
 
-use Latitude\QueryBuilder\Engine\BasicEngine;
+use Latitude\QueryBuilder\Engine\CommonEngine;
 use Latitude\QueryBuilder\Query\InsertQuery as LatitudeInsertQuery;
 use Latitude\QueryBuilder\Query\UpdateQuery as LatitudeUpdateQuery;
 
-class WpdbEngine extends BasicEngine
+class WpdbEngine extends CommonEngine
 {
     public function makeUpdate(): LatitudeUpdateQuery
     {

@@ -1,8 +1,0 @@
-{
-    "require": {
-        "symfony/var-dumper": "^4.3"
-    },
-    "autoload": {
-    	"classmap": ["src/"]
-    }
-}

@@ -6,18 +6,22 @@ Just a central repository where I can collect some random ideas for WordPress as
 
 A (rough) integration of the Symfony VarDumper dump server for non-framework sites. This is not a WP specific tool but could potentially be updated to include WP-specific context data and/or be reworked to run within WP-CLI.
 
-## flush-free-rewrites
+## ~~fast-route-to-wp-rewrite~~
 
-A very minimal abstraction over the rewrite API which allows for adding/removing rewrite rules at runtime without touching the database.
+See [toy-wp-routing](https://github.com/ssnepenthe/toy-wp-routing).
 
-## footer-dump
+## ~~flush-free-rewrites~~
 
-A wrapper around the Symfony VarDumper component which sends the output of the `dump` function to `wp_footer`.
+See [toy-wp-routing](https://github.com/ssnepenthe/toy-wp-routing).
 
-## hook-injection
+## ~~footer-dump~~
 
-An abstraction over the hook API which provides automatic injection of WordPress globals into hook callbacks.
+See [wp-dump-zone](https://github.com/ssnepenthe/wp-dump-zone).
 
-## query-builder
+## ~~hook-injection~~
 
-A very simple bridge between wpdb and the latitude query builder package.
+See [toy-wp-event-management](https://github.com/ssnepenthe/toy-wp-event-management).
+
+## ~~query-builder~~
+
+See [wpdb-engine-for-latitude](https://github.com/ssnepenthe/wpdb-engine-for-latitude).
